@@ -13,4 +13,10 @@ Download the .zip of this repository and unzipt it in your browser's Extensions 
 create a directory, name it "open-ch" and a directory inside it named "1.0.5_0", inside the last directory unzip the repository you downloaded and reload chrome/chromium.
 
 ### Starting the server
-You will need nodejs for this, inside your "1.0.5_0" directory you will find a "server" directory, cd into it with a terminal instance and run "node server.js", make sure to either use tmux or something or just dont close the terminal while you use the extension.
+You will need nodejs for this, make sure to install all the dependencies:
+
+```
+npm ci
+```
+
+inside your "1.0.5_0" directory you will find a "server" directory, cd into it with a terminal instance and run "node server.js", make sure to either use tmux or something or just dont close the terminal while you use the extension.
