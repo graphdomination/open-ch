@@ -1,0 +1,324 @@
+/**
+ * Extension Overlay Styles
+ *
+ * Styles for the visual overlay system including:
+ * - Arrow rendering for move visualization
+ * - Square highlighting for source/destination squares
+ * - Evaluation score display
+ *
+ * All overlay elements use pointer-events: none to ensure
+ * users can still click through to interact with the board.
+ */
+
+/* ============================================================
+   Overlay Container
+   ============================================================ */
+
+#_xo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  overflow: visible;
+}
+
+#_xo svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Arrow Styling
+   ============================================================ */
+
+._xar {
+  /* Static white dashed line */
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 8, 16;
+
+  /* Prevent interaction */
+  pointer-events: none;
+}
+
+/* Alternative arrow colors for different scenarios */
+._xar--secondary {
+  stroke: rgba(255, 165, 0, 0.75);
+}
+
+._xar--alternative {
+  stroke: rgba(0, 140, 255, 0.75);
+}
+
+/* ============================================================
+   Square Highlight Styling
+   ============================================================ */
+
+._xhl {
+  /* Prevent interaction */
+  pointer-events: none;
+
+  /* Smooth appearance */
+  opacity: 0;
+  animation: _k6 0.15s ease-out forwards;
+
+  /* Rounded corners for softer appearance */
+  rx: 2px;
+  ry: 2px;
+}
+
+/* Source square - lighter highlight */
+._xhs {
+  fill: rgba(0, 200, 255, 0.3);
+}
+
+/* Destination square - stronger highlight */
+._xhd {
+  fill: rgba(0, 220, 255, 0.45);
+}
+
+/* Pulsing destination square */
+._xhp {
+  animation: _k5 1.2s ease-in-out infinite;
+}
+
+@keyframes _k5 {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   Evaluation Display Styling
+   ============================================================ */
+
+#_xv {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  min-width: 45px;
+  padding: 6px 10px;
+  text-align: center;
+
+  /* Background */
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+
+  /* Prevent interaction */
+  pointer-events: none;
+  z-index: 101;
+
+  /* Smooth transitions */
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.15s ease-out;
+
+  /* Appearance animation */
+  animation: _k7 0.2s ease-out;
+}
+
+/* Evaluation color variants */
+#_xv.eval-positive {
+  color: #4ade80;
+}
+
+#_xv.eval-negative {
+  color: #f87171;
+}
+
+#_xv.eval-neutral {
+  color: #fbbf24;
+}
+
+/* Mate notation emphasis */
+#_xv.eval-mate {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   Loading/Analyzing State
+   ============================================================ */
+
+#_xv.analyzing {
+  background: rgba(50, 50, 50, 0.8);
+}
+
+#_xv.analyzing::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 8px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: _k9 0.8s linear infinite;
+}
+
+/* ============================================================
+   Error State
+   ============================================================ */
+
+._xe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 16px;
+
+  background: rgba(239, 68, 68, 0.9);
+  border-radius: 6px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+
+  pointer-events: none;
+  z-index: 102;
+
+  animation: _k8 0.25s ease-out;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+@keyframes _k10 {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 100;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes _k6 {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes _k7 {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes _k8 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes _k9 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   Accessibility & Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  ._xar,
+  ._xhl,
+  ._xhp,
+  #_xv,
+  ._xe {
+    animation: none;
+    transition: none;
+  }
+
+  #_xv.analyzing::after {
+    animation: none;
+    display: none;
+  }
+}
+
+/* ============================================================
+   High Contrast Mode
+   ============================================================ */
+
+@media (prefers-contrast: high) {
+  ._xar {
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 12;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.8));
+  }
+
+  ._xhl {
+    stroke: rgba(0, 255, 255, 0.9);
+    stroke-width: 3;
+  }
+
+  #_xv {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ============================================================
+   Dark Theme Compatibility
+   ============================================================ */
+
+.board-dark #_xo ._xar,
+[data-theme="dark"] #_xo ._xar {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* ============================================================
+   Print Styles - Hide overlay when printing
+   ============================================================ */
+
+@media print {
+  #_xo {
+    display: none !important;
+  }
+}

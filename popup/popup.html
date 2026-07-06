@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChessHelper.ai</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <div class="popup-brand">
+        <img src="../icons/icon48.png" alt="ChessHelper.ai" class="popup-logo">
+        <a id="brand-link" href="#" target="_blank" rel="noopener" class="popup-title-link">
+          <h1 class="popup-title">ChessHelper.ai</h1>
+        </a>
+      </div>
+      <label class="toggle-switch toggle-switch-header">
+        <input type="checkbox" id="enabled-toggle" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </header>
+
+    <!-- Auth Section: Loading State -->
+    <section id="auth-loading" class="auth-section">
+      <div class="auth-loading-spinner"></div>
+    </section>
+
+    <!-- Auth Section: Anonymous (not signed in) -->
+    <section id="auth-anonymous" class="auth-section" style="display: none;">
+      <div class="usage-card">
+        <div class="usage-label">
+          <span id="anon-usage-text">0 / 3 games used</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="anon-progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <span class="usage-sublabel">Sign in for more</span>
+      </div>
+      <a id="signup-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+        Sign In Free &rarr;
+      </a>
+      <span class="auth-sublabel">3 games/day with a free account</span>
+
+      <div class="connect-divider">
+        <span>or</span>
+      </div>
+      <button id="connect-toggle-btn" class="btn-connect-toggle">
+        Connect with token
+      </button>
+      <div id="connect-token-section" class="connect-token-section" style="display: none;">
+        <input type="text" id="token-input" class="token-input" placeholder="Paste chext_... token">
+        <button id="connect-btn" class="btn btn-connect">Connect</button>
+        <span id="connect-error" class="connect-error"></span>
+      </div>
+    </section>
+
+    <!-- Auth Section: Free Tier -->
+    <section id="auth-free" class="auth-section" style="display: none;">
+      <div class="user-greeting">
+        Hi, <span id="free-user-name"></span> <span class="badge badge-free">Free</span>
+      </div>
+      <div class="usage-row">
+        <span class="usage-label">Today: <span id="free-daily-text">0 / 3</span></span>
+        <div class="progress-bar-container">
+          <div id="free-daily-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="usage-row">
+        <span class="usage-label">This week: <span id="free-weekly-text">0 / 10</span></span>
+        <div class="progress-bar-container">
+          <div id="free-weekly-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+      <a id="upgrade-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary">
+        Upgrade to Pro &rarr;
+      </a>
+      <span class="auth-sublabel">Unlimited games &mdash; plans from $2.99/mo</span>
+    </section>
+
+    <!-- Auth Section: Pro Tier -->
+    <section id="auth-pro" class="auth-section" style="display: none;">
+      <div class="user-greeting">
+        Hi, <span id="pro-user-name"></span> <span class="badge badge-pro">PRO</span>
+      </div>
+      <div class="pro-info">
+        <span class="pro-unlimited">Unlimited games</span>
+        <span class="pro-sublabel">No daily or weekly limits</span>
+      </div>
+    </section>
+
+    <main class="popup-content">
+      <!-- Analysis Toggle Section -->
+      <section class="settings-section">
+        <div class="setting-row">
+          <div class="setting-label">
+            <label for="analysis-toggle">Analysis</label>
+            <span class="setting-description">Show best move overlay on board</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="analysis-toggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Depth / ELO Section -->
+      <section class="settings-section">
+        <div class="setting-row setting-row-vertical">
+          <div class="setting-label">
+            <label for="depth-input">Engine Strength</label>
+            <span class="setting-description">Approximate ELO rating of engine play</span>
+          </div>
+          <div class="input-with-value">
+            <input type="range" id="depth-input" min="1" max="20" value="15" class="range-input">
+            <span id="depth-value" class="input-value">~2600</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Autoplay Section -->
+      <section class="settings-section">
+        <div class="setting-row">
+          <div class="setting-label">
+            <label for="autoplay-toggle">Autoplay</label>
+            <span class="setting-description">Automatically play suggested moves</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="autoplay-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Autoplay Delay Settings -->
+      <section class="settings-section autoplay-settings" id="autoplay-settings">
+        <!-- Time Variation Toggle -->
+        <div class="setting-row">
+          <div class="setting-label">
+            <label for="variation-toggle">Time Variation</label>
+            <span class="setting-description">Randomize delay for natural timing</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="variation-toggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Min Delay (shown when variation enabled) -->
+        <div class="setting-row setting-row-vertical" id="delay-min-section">
+          <div class="setting-label">
+            <label for="delay-min-input">Min Delay</label>
+            <span class="setting-description">Fastest move time (ms)</span>
+          </div>
+          <div class="input-with-value">
+            <input type="range" id="delay-min-input" min="100" max="3000" value="500" step="100" class="range-input">
+            <span id="delay-min-value" class="input-value">500ms</span>
+          </div>
+        </div>
+
+        <!-- Max Delay (shown when variation enabled) -->
+        <div class="setting-row setting-row-vertical" id="delay-max-section">
+          <div class="setting-label">
+            <label for="delay-max-input">Max Delay</label>
+            <span class="setting-description">Slowest move time (ms)</span>
+          </div>
+          <div class="input-with-value">
+            <input type="range" id="delay-max-input" min="500" max="10000" value="2000" step="100" class="range-input">
+            <span id="delay-max-value" class="input-value">2000ms</span>
+          </div>
+        </div>
+
+        <!-- Fixed Delay (shown when variation disabled) -->
+        <div class="setting-row setting-row-vertical" id="delay-fixed-section" style="display: none;">
+          <div class="setting-label">
+            <label for="delay-input">Fixed Delay</label>
+            <span class="setting-description">Delay before playing move (ms)</span>
+          </div>
+          <div class="input-with-value">
+            <input type="range" id="delay-input" min="100" max="5000" value="1000" step="100" class="range-input">
+            <span id="delay-value" class="input-value">1000ms</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Antidetect Section -->
+      <section class="settings-section">
+        <div class="setting-row">
+          <div class="setting-label">
+            <label for="antidetect-toggle">Antidetect</label>
+            <span class="setting-description">Periodically play a weak move (shown in orange) to look human</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="antidetect-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Antidetect Interval Settings -->
+      <section class="settings-section antidetect-settings" id="antidetect-settings">
+        <div class="setting-row setting-row-vertical">
+          <div class="setting-label">
+            <label for="antidetect-min-input">Min Interval</label>
+            <span class="setting-description">Fewest moves between weak moves</span>
+          </div>
+          <div class="input-with-value">
+            <input type="range" id="antidetect-min-input" min="1" max="15" value="5" class="range-input">
+            <span id="antidetect-min-value" class="input-value">5</span>
+          </div>
+        </div>
+        <div class="setting-row setting-row-vertical">
+          <div class="setting-label">
+            <label for="antidetect-max-input">Max Interval</label>
+            <span class="setting-description">Most moves between weak moves</span>
+          </div>
+          <div class="input-with-value">
+            <input type="range" id="antidetect-max-input" min="2" max="20" value="6" class="range-input">
+            <span id="antidetect-max-value" class="input-value">6</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="popup-footer">
+      <!-- Account footer (shown when signed in) -->
+      <div id="account-footer" class="account-footer" style="display: none;">
+        <span id="account-email" class="account-email"></span>
+        <button id="signout-btn" class="btn-signout">Sign Out</button>
+      </div>
+      <!-- Status indicator (shown when not signed in) -->
+      <div id="status" class="status-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Ready</span>
+      </div>
+      <button id="admin-btn" class="btn btn-secondary">Admin Panel</button>
+      <!-- DOM health indicator -->
+      <div id="dom-health" class="dom-health" style="display: none;" title="Click for details">
+        <span id="dom-health-dot" class="dom-health-dot"></span>
+        <span id="dom-health-text" class="dom-health-text"></span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

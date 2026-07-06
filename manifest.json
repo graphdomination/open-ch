@@ -1,0 +1,51 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icons/icon128.png",
+         "16": "icons/icon16.png",
+         "48": "icons/icon48.png"
+      },
+      "default_popup": "popup/popup.html",
+      "default_title": "ChessHelper.ai"
+   },
+   "background": {
+      "service_worker": "background/service-worker.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content/lichess-trusted-events.js" ],
+      "matches": [ "*://*.lichess.org/*" ],
+      "run_at": "document_start",
+      "world": "MAIN"
+   }, {
+      "css": [ "content/styles.css" ],
+      "js": [ "config.js", "lib/chess.min.js", "content/content.js", "content/overlay.js" ],
+      "matches": [ "*://*.chess.com/*", "*://*.lichess.org/*" ],
+      "run_at": "document_idle"
+   }, {
+      "js": [ "content-connect.js" ],
+      "matches": [ "*://chesshelper.ai/extension/*" ],
+      "run_at": "document_idle"
+   } ],
+   "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self';"
+   },
+   "description": "Analyzes chess positions on chess.com and lichess.org using ChessHelper AI engine and displays recommended moves as visual overlays",
+   "homepage_url": "https://chesshelper.ai",
+   "host_permissions": [ "*://*.chess.com/*", "*://*.lichess.org/*", "https://chesshelper.ai/*" ],
+   "icons": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5XvADd9aP0YR/xjvW1zszopZIF5W+/cTB6AAoEWQylm8PAiWpfkASQDV8uaylRlUz04spvbZs4Jr/ERH6eWBPsk1FKAQqOHM6//j9edXvfR+Az+vV5iA1jkd1fVMW/pP9l9PPN00sAd3K8IC7s4N5B3JzH3VBNUVVP/QO+PTgAEEUqXe2xSU++zEu+TT8pg9XJrwS9j4GDdEOVMvYvOu2DTojtKtu+Ay04skEAq9AeoVoTuPJaqALc6rzKVG+1iw/a5A4qVz2avA3mDKsDne/NklDsjk61xZPXQ0hMSzLJb4p9w2hFJoyo7TQ27B03gY84gDHnLHPwkIdZoXrGfWOwIDAQAB",
+   "manifest_version": 3,
+   "minimum_chrome_version": "109",
+   "name": "ChessHelper.ai",
+   "permissions": [ "activeTab", "storage", "notifications" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.5",
+   "web_accessible_resources": [ {
+      "matches": [ "*://*.chess.com/*", "*://*.lichess.org/*" ],
+      "resources": [ "chess-helper-logo-transparent.png" ]
+   } ]
+}

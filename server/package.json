@@ -1,0 +1,16 @@
+{
+  "name": "chesshelper-server",
+  "version": "1.0.0",
+  "description": "Local backend for ChessHelper.ai browser extension",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "chess.js": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "stockfish": "^18.0.8"
+  }
+}

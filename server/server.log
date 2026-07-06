@@ -1,0 +1,218 @@
+nohup: ignoring input
+ChessHelper.ai local server running at http://localhost:3000
+[Server] /api/analyze received { fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPP', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'e2e4',
+  ponder: 'e7e5',
+  evaluation: { type: 'cp', value: 35, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'rn2k2r/p2b3p/6p1/2p5/4n3/5PP1/PP', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f3e4',
+  ponder: 'b8c6',
+  evaluation: { type: 'cp', value: 862, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r3k2r/p2b3p/n5p1/2p5/4P3/6P1/PPP', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f1a6',
+  ponder: 'c5c4',
+  evaluation: { type: 'cp', value: 1039, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r3k1r1/p2b3p/B5p1/2p5/4P3/6P1/PP', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'd2d3',
+  ponder: 'c5c4',
+  evaluation: { type: 'cp', value: 1111, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r3k3/p2b2rp/B5p1/2p5/4P3/3P2P1/P', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'a6c4',
+  ponder: 'd7c6',
+  evaluation: { type: 'cp', value: 1148, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: '1r2k3/p2b2rp/6p1/2p5/2B1P3/3P2P1', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'd1f3',
+  ponder: 'b8b4',
+  evaluation: { type: 'cp', value: 1223, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r3k3/p2b2rp/6p1/2p5/2B1P3/3P1QP1', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'h1f1',
+  ponder: 'e8c8',
+  evaluation: { type: 'cp', value: 1283, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r2k4/p2b2rp/6p1/2p5/2B1P3/3P1QP1', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f3f8',
+  ponder: 'd8c7',
+  evaluation: { type: 'cp', value: 1622, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r2kbQ2/p5rp/6p1/2p5/2B1P3/3P2P1/', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f8g7',
+  ponder: 'h7h6',
+  evaluation: { type: 'mate', value: 7, depth: 15 },
+  mate: 7,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r2k4/p2b2Qp/6p1/2p5/2B1P3/3P2P1/', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f1f8',
+  ponder: 'd8c7',
+  evaluation: { type: 'mate', value: 4, depth: 15 },
+  mate: 4,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r4R2/p1kb2Qp/6p1/2p5/2B1P3/3P2P1', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'c1f4',
+  ponder: 'c7b6',
+  evaluation: { type: 'mate', value: 3, depth: 15 },
+  mate: 3,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r4R2/p2b2Qp/2k3p1/2p5/2B1PB2/3P2', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f8f6',
+  ponder: 'd7e6',
+  evaluation: { type: 'mate', value: 2, depth: 15 },
+  mate: 2,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r7/pk1b2Qp/5Rp1/2p5/2B1PB2/3P2P1', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'g7d7',
+  ponder: null,
+  evaluation: { type: 'mate', value: 1, depth: 15 },
+  mate: 1,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPP', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'e2e4',
+  ponder: 'e7e5',
+  evaluation: { type: 'cp', value: 35, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'rnbqkbnr/pppp1ppp/8/4p3/8/4P3/PP', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'd2d4',
+  ponder: 'e5d4',
+  evaluation: { type: 'cp', value: 21, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1bqkbnr/pppp1ppp/2n5/4p3/3P4/4P', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'd4d5',
+  ponder: 'c6e7',
+  evaluation: { type: 'cp', value: 48, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1bqkbnr/pppp1ppp/8/3Pp3/1n6/4P3', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'b1c3',
+  ponder: 'g8f6',
+  evaluation: { type: 'cp', value: 81, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1b1kbnr/pppp1ppp/8/3Pp1q1/1n6/2', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'a2a3',
+  ponder: 'b4a6',
+  evaluation: { type: 'cp', value: 160, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1b1kbnr/pppp1ppp/n7/3Pp1q1/8/P1', depth: 2 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'h2h4',
+  ponder: null,
+  evaluation: { type: 'cp', value: 186, depth: 2 },
+  mate: null,
+  depth: 2
+}
+[Server] /api/analyze received { fen: 'r1b1kbnr/pppp1ppp/n7/3Ppq2/7P/P1', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'e3e4',
+  ponder: 'f5f6',
+  evaluation: { type: 'cp', value: 199, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1b1kbnr/pppp1ppp/n4q2/3Pp3/4P2P', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'c1g5',
+  ponder: 'f6b6',
+  evaluation: { type: 'cp', value: 205, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1b1kbnr/pppp1ppp/n5q1/3Pp1B1/4P', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'g1f3',
+  ponder: 'f7f6',
+  evaluation: { type: 'cp', value: 218, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1b1k1nr/ppppbppp/n5q1/3Pp1B1/4P', depth: 15 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'f3e5',
+  ponder: 'g6d6',
+  evaluation: { type: 'cp', value: 428, depth: 15 },
+  mate: null,
+  depth: 15
+}
+[Server] /api/analyze received { fen: 'r1b1k1nr/ppppbppp/n7/3PN1Bq/4P2P', depth: 2 }
+[Server] /api/analyze starting Stockfish
+[Server] /api/analyze Stockfish result {
+  bestMove: 'd1h5',
+  ponder: 'b7b6',
+  evaluation: { type: 'cp', value: 883, depth: 2 },
+  mate: null,
+  depth: 2
+}

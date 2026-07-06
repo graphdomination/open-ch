@@ -1,0 +1,1 @@
+const CONFIG={"APP_URL":"http://localhost:3000","API_URL":"http://localhost:3000/api/analyze","API_DEPTH":15,"RATE_LIMIT_OVERLAY":true};globalThis._cfg=CONFIG;
